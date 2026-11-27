@@ -53,6 +53,15 @@ jobs:
               if marker not in source:
                   raise SystemExit("Could not find DrvGen.py import marker")
               path.write_text(source.replace(marker, compatibility, 1))
+
+          eint_path = Path("tools/dct/data/EintData.py")
+          eint_source = eint_path.read_text()
+          converted_loop = "for (key, value) in list(map.items()):"
+          if converted_loop not in eint_source:
+              raise SystemExit("Could not find converted EintData loop")
+          eint_path.write_text(
+              eint_source.replace(converted_loop, "for (key, value) in map.items():", 1)
+          )
           PY
 
       - name: Build kernel and device trees
