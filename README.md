@@ -6,13 +6,15 @@ Motorola stock build POES29.288-60-6-1-15.
 
 ## Current status
 
-- Kernel target is ARM64 with Motorola's fiji_64_defconfig.
+- Product target is `lineage_fiji`, with stock Android 9 build identity and shipping API level.
+- The product includes generated proprietary modules from `vendor/motorola/fiji/fiji-vendor.mk` when extracted locally.
+- VNDK 28 is requested for compatibility with the Android 9 stock vendor image.
+- Kernel target is ARM64 with Motorola's `fiji_64_defconfig`.
 - The stale prebuilt zImage-dtb was omitted; this repository has no kernel binary or proprietary vendor blobs.
-- Infinix OTA assertions and vendor makefile names were corrected for Motorola fiji.
-- Recovery fstab now follows stock slot selection, product, F2FS and AES-256-XTS settings.
-- The manually started GitHub Actions workflow builds only the official Motorola kernel.
+- Recovery fstab follows stock slot selection, product, F2FS and AES-256-XTS settings.
+- The GitHub Actions workflow is reserved for a later kernel-only build; it does not build the ROM.
 
-This is an early bring-up tree, not a boot-tested Android 15 port. The stock is Android 9 with Linux 4.9.117; Android 15 kernel compatibility work, vendor interface validation, SELinux policy, and a complete proprietary-file list remain. Do not treat the workflow artifact as a flashable boot image.
+This is an early bring-up tree, not a boot-tested Android 15 port. The stock is Android 9 with Linux 4.9.117; Android 15 kernel compatibility work, vendor interface validation, SELinux policy, and a complete proprietary-file list remain. Do not treat a kernel workflow artifact as a flashable boot image.
 
 ## Kernel source
 
