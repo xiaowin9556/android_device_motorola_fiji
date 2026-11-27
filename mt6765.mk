@@ -32,10 +32,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
     $(LOCAL_PATH)/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
-
-# System properties
--include $(LOCAL_PATH)/system_prop.mk
-
-#TODO
-# Call proprietary blob setup
-#$(call inherit-product-if-exists, vendor/Infinix/X626/X626-vendor.mk)
