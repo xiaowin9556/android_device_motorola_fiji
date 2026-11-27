@@ -11,5 +11,10 @@ PRODUCT_NAME := lineage_fiji
 PRODUCT_BRAND := Motorola
 PRODUCT_MODEL := Moto e6s
 PRODUCT_MANUFACTURER := MOTOROLA MOBILITY LIMITED
+PRODUCT_SHIPPING_API_LEVEL := 28
 
-COMMON_LUNCH_CHOICES := lineage_fiji-userdebug
+# Stock identity from the supplied POES29.288-60-6-1-15 package
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="fiji-user 9 POES29.288-60-6-1-15 66fed:user/release-keys"
+
+BUILD_FINGERPRINT := motorola/fiji_64/fiji:9/POES29.288-60-6-1-15/66fed:user/release-keys
