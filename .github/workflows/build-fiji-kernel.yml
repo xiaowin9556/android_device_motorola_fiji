@@ -31,7 +31,25 @@ jobs:
 
       - name: Convert legacy MediaTek DCT helpers to Python 3
         working-directory: kernel
-        run: python3 -m lib2to3 -w tools/dct
+        run: |
+          python3 -m lib2to3 -w tools/dct
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("tools/dct/DrvGen.py")
+          source = path.read_text()
+          marker = "import os, sys\n"
+          compatibility = (
+              marker
+              + "\n# Restore cmp() used by the legacy MediaTek DCT helper.\n"
+              + "def cmp(a, b):\n"
+              + "    return (a > b) - (a < b)\n"
+          )
+          if "def cmp(a, b):" not in source:
+              if marker not in source:
+                  raise SystemExit("Could not find DrvGen.py import marker")
+              path.write_text(source.replace(marker, compatibility, 1))
+          PY
 
       - name: Build kernel and device trees
         working-directory: kernel
@@ -49,4 +67,3 @@ jobs:
             kernel/out/arch/arm64/boot/dts/mediatek/*.dtb
             kernel/out/arch/arm64/boot/dts/mediatek/*.dtbo
             kernel/out/.config
-
