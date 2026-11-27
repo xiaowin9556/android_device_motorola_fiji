@@ -37,7 +37,6 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x11b00000 -
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_USES_RECOVERY_AS_BOOT := true
 
-
 # Dex
 ifeq ($(HOST_OS),linux)
   ifneq ($(TARGET_BUILD_VARIANT),eng)
@@ -78,15 +77,13 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Mediatek support
-BOARD_USES_MTK_HARDWARE:=true
+BOARD_USES_MTK_HARDWARE := true
 
 # Audio
 BOARD_USES_MTK_AUDIO := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/recovery.fstab
-
-# Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -98,61 +95,10 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto
 TARGET_DISABLE_TRIPLE_BUFFERING := false
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
 
-########
-# TWRP #
-########
-
-# Resolution
-TW_THEME := portrait_hdpi
-DEVICE_SCREEN_WIDTH := 720
-DEVICE_SCREEN_HEIGHT := 1520
-
-# Display
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-TW_DEFAULT_BRIGHTNESS := 188
-TW_MAX_BRIGHTNESS := 255
-TW_NO_SCREEN_BLANK := true
-TW_NO_SCREEN_TIMEOUT := true
-TW_NO_BATT_PERCENT := false
-TW_SCREEN_BLANK_ON_BOOT := true
-
-TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
-TW_USE_TOOLBOX := true
-
-# Excludes
-TW_EXCLUDE_TWRPAPP := true
-
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_CRYPTO_FS_TYPE := "ext4"
-TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/bootdevice/by-name/userdata"
-TW_CRYPTO_MNT_POINT := "/data"
-TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,barrier=0,data=ordered"
-
-# Debug
-TWRP_INCLUDE_LOGCAT := true
-
-# Storage
-TW_HAS_MTP := true
-TW_MTP_DEVICE := /dev/mtp_usb
-TW_INTERNAL_STORAGE_PATH := "/data/media"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_DEFAULT_EXTERNAL_STORAGE := true
-TW_NO_USB_STORAGE := false
-
-# Languages
-TW_EXTRA_LANGUAGES := true
-TW_DEFAULT_LANGUAGE := en
-
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
-
-BOARD_SEPOLICY_DIRS := \
-       $(COMMON_PATH)/sepolicy
+# SELinux
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
 # Treble
-BOARD_VNDK_VERSION  := current
+BOARD_VNDK_VERSION := current
 TARGET_COPY_OUT_VENDOR := vendor
 PRODUCT_FULL_TREBLE_OVERRIDE := true
