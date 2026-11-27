@@ -1,0 +1,47 @@
+name: Build Moto e6s fiji_64 kernel
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 360
+    steps:
+      - name: Check out Motorola kernel source
+        uses: actions/checkout@v4
+        with:
+          repository: MotorolaMobilityLLC/kernel-mtk
+          ref: Pie-9-release-POES
+          path: kernel
+          fetch-depth: 1
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc bison flex gcc-aarch64-linux-gnu \
+            libelf-dev libncurses5-dev libssl-dev make python3
+
+      - name: Configure fiji_64 kernel
+        working-directory: kernel
+        run: make O=out ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- fiji_64_defconfig
+
+      - name: Build kernel and device trees
+        working-directory: kernel
+        run: make -j2 O=out ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image.gz-dtb dtbs
+
+      - name: Save build outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: fiji_64-kernel-Pie-9-release-POES
+          if-no-files-found: error
+          path: |
+            kernel/out/arch/arm64/boot/Image
+            kernel/out/arch/arm64/boot/Image.gz
+            kernel/out/arch/arm64/boot/Image.gz-dtb
+            kernel/out/arch/arm64/boot/dts/mediatek/*.dtb
+            kernel/out/.config
+
