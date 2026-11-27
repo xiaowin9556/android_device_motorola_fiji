@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <project name="MotorolaMobilityLLC/kernel-mtk"
+             path="kernel/motorola/fiji"
+             remote="github"
+             revision="Pie-9-release-POES" />
+</manifest>
