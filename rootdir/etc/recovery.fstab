@@ -1,6 +1,5 @@
 /dev/block/platform/bootdevice/by-name/system   /         ext4 ro wait,slotselect,recoveryonly
 /dev/block/platform/bootdevice/by-name/vendor   /vendor   ext4 ro wait,slotselect,recoveryonly
 /dev/block/platform/bootdevice/by-name/product  /product  ext4 ro wait,slotselect,recoveryonly
-/dev/block/platform/bootdevice/by-name/userdata /data     f2fs noatime,nosuid,nodev,discard wait,check,quota,formattable,fileencryption=aes-256-xts:aes-256-cts
-/dev/block/platform/bootdevice/by-name/cache    /cache    ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check
+/dev/block/platform/bootdevice/by-name/userdata /data     f2fs noatime,nosuid,nodev,discard,noflush_merge wait,check,quota,reservedsize=128M,formattable,resize,fileencryption=aes-256-xts
 /dev/block/platform/bootdevice/by-name/boot     /boot     emmc defaults defaults
