@@ -41,6 +41,10 @@ jobs:
           marker = "import os, sys\n"
           compatibility = (
               marker
+              + "import string\n"
+              + "string.atoi = int\n"
+              + "string.atol = int\n"
+              + "string.atof = float\n"
               + "\n# Restore cmp() used by the legacy MediaTek DCT helper.\n"
               + "def cmp(a, b):\n"
               + "    return (a > b) - (a < b)\n"
