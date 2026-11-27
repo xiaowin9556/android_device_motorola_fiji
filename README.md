@@ -6,14 +6,15 @@ Motorola stock build POES29.288-60-6-1-15.
 
 ## Current status
 
-- Corrected the kernel target to ARM64 and Motorola's fiji_64_defconfig.
-- Removed the stale prebuilt zImage-dtb; no kernel binary or proprietary vendor blobs are stored here.
-- Corrected stale Infinix OTA assertions and proprietary makefile vendor/device names.
-- Added slot selection and product to the recovery fstab using the stock partition map.
-- Added .github/workflows/build-fiji-kernel.yml to build only the official Motorola kernel and attach outputs to a manually started Actions run.
+- Kernel target is ARM64 with Motorola's fiji_64_defconfig.
+- The stale prebuilt zImage-dtb was omitted; this repository has no kernel binary or proprietary vendor blobs.
+- Infinix OTA assertions and vendor makefile names were corrected for Motorola fiji.
+- Recovery fstab now follows stock slot selection, product, F2FS and AES-256-XTS settings.
+- The manually started GitHub Actions workflow builds only the official Motorola kernel.
 
-This is an early bring-up tree, not a boot-tested Android 15 port. The stock is Android 9 with Linux 4.9.117; kernel compatibility work and vendor interface validation are still required. The stock recovery fstab's exact F2FS encryption flags must be checked against the supplied firmware before relying on /data decryption. The proprietary-file list is incomplete and must be extracted from the stock images; do not commit proprietary blobs.
+This is an early bring-up tree, not a boot-tested Android 15 port. The stock is Android 9 with Linux 4.9.117; Android 15 kernel compatibility work, vendor interface validation, SELinux policy, and a complete proprietary-file list remain. Do not treat the workflow artifact as a flashable boot image.
 
 ## Kernel source
 
-The matching source branch is MotorolaMobilityLLC/kernel-mtk, branch Pie-9-release-POES. The expected repo path is kernel/motorola/fiji.
+Motorola source: https://github.com/MotorolaMobilityLLC/kernel-mtk/tree/Pie-9-release-POES
+The local manifest snippet in manifests/fiji-kernel.xml places it at kernel/motorola/fiji.
