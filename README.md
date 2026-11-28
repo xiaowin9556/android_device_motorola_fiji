@@ -8,7 +8,7 @@ Motorola stock build POES29.288-60-6-1-15.
 
 - Product target is `lineage_fiji`, with stock Android 9 build identity and shipping API level.
 - The product includes generated proprietary modules from `vendor/motorola/fiji/fiji-vendor.mk` when blobs are extracted locally.
-- `proprietary-files.txt` now contains a 1,272-path regular-file inventory from the stock vendor and product images. Generated build properties are excluded; [stock-vendor-symlinks.txt](stock-vendor-symlinks.txt) records the separate vendor symlink map. Both still need extraction and boot validation.
+- `proprietary-files.txt` contains 1,272 regular-file paths from the stock vendor and product images, with 160 file symlinks declared using `SYMLINK`. Seven vendor mount-point symlinks are added as `install_symlink` modules in `Android.bp`; the stock link map is kept in [stock-vendor-symlinks.txt](stock-vendor-symlinks.txt). The full extraction and boot behavior still need validation.
 - Blob extraction uses the LineageOS Python extract-utils interface; `extract-files.sh` and `setup-makefiles.sh` remain compatibility wrappers. In the Android source checkout, run `python3 extract-files.py /path/to/stock-rom.zip`, then `python3 setup-makefiles.py`.
 - VNDK 28 is requested for compatibility with the Android 9 stock vendor image.
 - Kernel target is ARM64 with Motorola's `fiji_64_defconfig`.
