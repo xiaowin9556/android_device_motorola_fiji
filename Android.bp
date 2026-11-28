@@ -1,0 +1,51 @@
+// SPDX-FileCopyrightText: 2026 The fiji device tree contributors
+// SPDX-License-Identifier: Apache-2.0
+
+install_symlink {
+    name: "vendor_elabel",
+    soc_specific: true,
+    installed_location: "elabel",
+    symlink_target: "/mnt/vendor/elabel",
+}
+
+install_symlink {
+    name: "vendor_nvcfg",
+    soc_specific: true,
+    installed_location: "nvcfg",
+    symlink_target: "/mnt/vendor/nvcfg",
+}
+
+install_symlink {
+    name: "vendor_nvdata",
+    soc_specific: true,
+    installed_location: "nvdata",
+    symlink_target: "/mnt/vendor/nvdata",
+}
+
+install_symlink {
+    name: "vendor_persist",
+    soc_specific: true,
+    installed_location: "persist",
+    symlink_target: "/mnt/vendor/persist",
+}
+
+install_symlink {
+    name: "vendor_product",
+    soc_specific: true,
+    installed_location: "product",
+    symlink_target: "/mnt/vendor/product",
+}
+
+install_symlink {
+    name: "vendor_protect_f",
+    soc_specific: true,
+    installed_location: "protect_f",
+    symlink_target: "/mnt/vendor/protect_f",
+}
+
+install_symlink {
+    name: "vendor_protect_s",
+    soc_specific: true,
+    installed_location: "protect_s",
+    symlink_target: "/mnt/vendor/protect_s",
+}
