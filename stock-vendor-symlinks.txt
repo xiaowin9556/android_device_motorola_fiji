@@ -1,6 +1,6 @@
 # Stock vendor symlinks from the supplied Android 9 vendor image
 # Format: path relative to vendor partition<TAB>link target
-# Reference inventory only; this is not consumed by extract-utils.
+# File aliases are declared in proprietary-files.txt; mount-point aliases are in Android.bp.
 app/EmCamera/lib/arm64/libem_camera_jni.so	/vendor/lib64/libem_camera_jni.so
 bin/acpi	toybox_vendor
 bin/base64	toybox_vendor
