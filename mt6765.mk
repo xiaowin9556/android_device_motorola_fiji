@@ -32,3 +32,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
     $(LOCAL_PATH)/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
+
+# Stock vendor mount-point symlinks
+PRODUCT_PACKAGES += \
+    vendor_elabel \
+    vendor_nvcfg \
+    vendor_nvdata \
+    vendor_persist \
+    vendor_product \
+    vendor_protect_f \
+    vendor_protect_s
